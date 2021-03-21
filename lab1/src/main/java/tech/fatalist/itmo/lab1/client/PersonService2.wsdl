@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:tns="http://standalone.service.lab1.itmo.fatalist.tech/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  name="PersonService" targetNamespace="http://standalone.service.lab1.itmo.fatalist.tech/">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                   xmlns:tns="http://standalone.service.lab1.itmo.fatalist.tech/" elementFormDefault="unqualified"
+                   targetNamespace="http://standalone.service.lab1.itmo.fatalist.tech/" version="1.0">
+
+            <xs:element name="getPersons" type="tns:getPersons"/>
+
+            <xs:element name="getPersonsResponse" type="tns:getPersonsResponse"/>
+
+            <xs:complexType name="getPersons">
+                <xs:sequence/>
+            </xs:complexType>
+
+            <xs:complexType name="getPersonsResponse">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:person"/>
+                </xs:sequence>
+            </xs:complexType>
+
+            <xs:complexType name="person">
+                <xs:sequence>
+                    <xs:element name="age" type="xs:int"/>
+                    <xs:element minOccurs="0" name="name" type="xs:string"/>
+                    <xs:element minOccurs="0" name="surname" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="getPersonsResponse">
+        <wsdl:part element="tns:getPersonsResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getPersons">
+        <wsdl:part element="tns:getPersons" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="PersonWebService">
+        <wsdl:operation name="getPersons">
+            <wsdl:input message="tns:getPersons" name="getPersons">
+            </wsdl:input>
+            <wsdl:output message="tns:getPersonsResponse" name="getPersonsResponse">
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="PersonServiceSoapBinding" type="tns:PersonWebService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="getPersons">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="getPersons">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getPersonsResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="PersonService">
+        <wsdl:port binding="tns:PersonServiceSoapBinding" name="PersonWebServicePort">
+            <soap:address location="http://localhost:8080/PersonService"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
