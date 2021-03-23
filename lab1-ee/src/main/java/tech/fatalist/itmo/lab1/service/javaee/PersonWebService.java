@@ -14,16 +14,16 @@ public class PersonWebService {
     @Resource(lookup = "java:/jdbc/itmo-web-services-lab1")
     private DataSource dataSource;
 
-    @WebMethod(operationName = "getAllPersons")
-    public Collection<Person> getAllPersons() throws SQLException {
+    @WebMethod(operationName = "getPersons")
+    public Collection<Person> getPersonsByName(
+            @WebParam(name = "name") String name,
+            @WebParam(name = "surname") String surname,
+            @WebParam(name = "age") Integer age,
+            @WebParam(name = "country") String country,
+            @WebParam(name = "city") String city
+    ) throws SQLException {
         var dao = new PostgreSQLDAO(getConnection());
-        return dao.getAllPersons();
-    }
-
-    @WebMethod(operationName = "getPersonsByName")
-    public Collection<Person> getPersonsByName(@WebParam(name = "personName") String name) throws SQLException {
-        var dao = new PostgreSQLDAO(getConnection());
-        return dao.getPersonsByName(name);
+        return dao.getPersons(name, surname, age, country, city);
     }
 
     private Connection getConnection() throws SQLException {

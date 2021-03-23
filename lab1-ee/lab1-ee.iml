@@ -55,5 +55,6 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.jvnet.staxex:stax-ex:1.8.3" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.geronimo.specs:geronimo-jta_1.1_spec:1.1.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.jboss.spec.javax.rmi:jboss-rmi-api_1.0_spec:1.0.6.Final" level="project" />
+    <orderEntry type="library" name="Maven: com.diffplug.durian:durian:3.4.0" level="project" />
   </component>
 </module>

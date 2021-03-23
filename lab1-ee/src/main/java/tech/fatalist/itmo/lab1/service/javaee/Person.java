@@ -4,14 +4,18 @@ public class Person {
     private String name;
     private String surname;
     private int age;
+    private String country;
+    private String city;
 
     public Person() {
     }
 
-    public Person(String name, String surname, int age) {
+    public Person(String name, String surname, int age, String country, String city) {
         this.name = name;
         this.surname = surname;
         this.age = age;
+        this.country = country;
+        this.city = city;
     }
 
     public String getName() {
@@ -38,12 +42,30 @@ public class Person {
         this.age = age;
     }
 
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
     @Override
     public String toString() {
         return "Person{" +
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", age=" + age +
+                ", country='" + country + '\'' +
+                ", city='" + city + '\'' +
                 '}';
     }
 }
