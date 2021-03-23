@@ -13,10 +13,6 @@
         <element id="directory" name="classes">
           <element id="module-output" name="lab1-ee" />
         </element>
-        <element id="directory" name="lib">
-          <element id="library" level="project" name="Maven: com.diffplug.durian:durian:3.4.0" />
-          <element id="library" level="project" name="CXF Runtime" />
-        </element>
       </element>
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/lab1-ee/target/lab1-ee-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />

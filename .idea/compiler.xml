@@ -20,10 +20,12 @@
         <outputRelativeToContentRoot value="true" />
         <module name="lab1" />
         <module name="lab1-ee" />
+        <module name="lab1-client" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="lab1" target="16" />
+      <module name="lab1-client" target="16" />
       <module name="lab1-ee" target="16" />
     </bytecodeTargetLevel>
   </component>

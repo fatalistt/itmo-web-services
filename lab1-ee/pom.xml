@@ -34,11 +34,6 @@
             <version>3.4.2</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>com.diffplug.durian</groupId>
-            <artifactId>durian</artifactId>
-            <version>3.4.0</version>
-        </dependency>
     </dependencies>
 
     <build>
