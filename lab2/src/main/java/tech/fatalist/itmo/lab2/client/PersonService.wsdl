@@ -1,0 +1,237 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://standalone.service.lab2.itmo.fatalist.tech/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="PersonService" targetNamespace="http://standalone.service.lab2.itmo.fatalist.tech/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://standalone.service.lab2.itmo.fatalist.tech/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://standalone.service.lab2.itmo.fatalist.tech/" version="1.0">
+  <xs:element name="createPerson" type="tns:createPerson"/>
+  <xs:element name="createPersonResponse" type="tns:createPersonResponse"/>
+  <xs:element name="deletePerson" type="tns:deletePerson"/>
+  <xs:element name="deletePersonResponse" type="tns:deletePersonResponse"/>
+  <xs:element name="getPersons" type="tns:getPersons"/>
+  <xs:element name="getPersonsResponse" type="tns:getPersonsResponse"/>
+  <xs:element name="updatePerson" type="tns:updatePerson"/>
+  <xs:element name="updatePersonResponse" type="tns:updatePersonResponse"/>
+  <xs:complexType name="getPersons">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="surname" type="xs:string"/>
+      <xs:element minOccurs="0" name="age" type="xs:int"/>
+      <xs:element minOccurs="0" name="country" type="xs:string"/>
+      <xs:element minOccurs="0" name="city" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getPersonsResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:person"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="person">
+    <xs:sequence>
+      <xs:element name="age" type="xs:int"/>
+      <xs:element minOccurs="0" name="avatar" type="xs:base64Binary"/>
+      <xs:element minOccurs="0" name="city" type="xs:string"/>
+      <xs:element minOccurs="0" name="country" type="xs:string"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="surname" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="updatePerson">
+    <xs:sequence>
+      <xs:element name="id" type="xs:int"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="surname" type="xs:string"/>
+      <xs:element minOccurs="0" name="age" type="xs:int"/>
+      <xs:element minOccurs="0" name="country" type="xs:string"/>
+      <xs:element minOccurs="0" name="city" type="xs:string"/>
+      <xs:element minOccurs="0" name="avatar" type="xs:base64Binary"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="updatePersonResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:updateResult"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType final="extension restriction" name="updateResult">
+    <xs:complexContent>
+      <xs:extension base="tns:record">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType abstract="true" name="record">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="deletePerson">
+    <xs:sequence>
+      <xs:element name="id" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deletePersonResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:deletionResult"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType final="extension restriction" name="deletionResult">
+    <xs:complexContent>
+      <xs:extension base="tns:record">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="createPerson">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="surname" type="xs:string"/>
+      <xs:element minOccurs="0" name="age" type="xs:int"/>
+      <xs:element minOccurs="0" name="country" type="xs:string"/>
+      <xs:element minOccurs="0" name="city" type="xs:string"/>
+      <xs:element minOccurs="0" name="avatar" type="xs:base64Binary"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createPersonResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:creationResult"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType final="extension restriction" name="creationResult">
+    <xs:complexContent>
+      <xs:extension base="tns:record">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SQLException" type="tns:SQLException"/>
+  <xs:complexType name="SQLException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="errorCode" type="xs:int"/>
+      <xs:element minOccurs="0" name="sQLState" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getPersonsResponse">
+    <wsdl:part element="tns:getPersonsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPersons">
+    <wsdl:part element="tns:getPersons" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SQLException">
+    <wsdl:part element="tns:SQLException" name="SQLException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deletePersonResponse">
+    <wsdl:part element="tns:deletePersonResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deletePerson">
+    <wsdl:part element="tns:deletePerson" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updatePersonResponse">
+    <wsdl:part element="tns:updatePersonResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createPersonResponse">
+    <wsdl:part element="tns:createPersonResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updatePerson">
+    <wsdl:part element="tns:updatePerson" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createPerson">
+    <wsdl:part element="tns:createPerson" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="PersonWebService">
+    <wsdl:operation name="getPersons">
+      <wsdl:input message="tns:getPersons" name="getPersons">
+    </wsdl:input>
+      <wsdl:output message="tns:getPersonsResponse" name="getPersonsResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:SQLException" name="SQLException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updatePerson">
+      <wsdl:input message="tns:updatePerson" name="updatePerson">
+    </wsdl:input>
+      <wsdl:output message="tns:updatePersonResponse" name="updatePersonResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:SQLException" name="SQLException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deletePerson">
+      <wsdl:input message="tns:deletePerson" name="deletePerson">
+    </wsdl:input>
+      <wsdl:output message="tns:deletePersonResponse" name="deletePersonResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:SQLException" name="SQLException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createPerson">
+      <wsdl:input message="tns:createPerson" name="createPerson">
+    </wsdl:input>
+      <wsdl:output message="tns:createPersonResponse" name="createPersonResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:SQLException" name="SQLException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PersonServiceSoapBinding" type="tns:PersonWebService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getPersons">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getPersons">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPersonsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="SQLException">
+        <soap:fault name="SQLException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updatePerson">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updatePerson">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updatePersonResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="SQLException">
+        <soap:fault name="SQLException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deletePerson">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="deletePerson">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deletePersonResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="SQLException">
+        <soap:fault name="SQLException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createPerson">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createPerson">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createPersonResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="SQLException">
+        <soap:fault name="SQLException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PersonService">
+    <wsdl:port binding="tns:PersonServiceSoapBinding" name="PersonWebServicePort">
+      <soap:address location="http://localhost:8080/PersonService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
