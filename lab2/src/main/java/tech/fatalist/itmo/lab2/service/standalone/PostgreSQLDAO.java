@@ -3,6 +3,7 @@ package tech.fatalist.itmo.lab2.service.standalone;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -20,7 +21,7 @@ public class PostgreSQLDAO {
     public Collection<Person> GetPersons(String name, String surname, Integer age, String country, String city) throws SQLException {
         var persons = new ArrayList<Person>();
         var getSql = createSqlParams(" and ", c -> String.format("%s = ?", c), name, surname, age, country, city, null);
-        var statement = connection.prepareStatement(String.format("select * from lab1%s", getSql.sql.length() > 0 ? " where " + getSql.sql : ""));
+        var statement = connection.prepareStatement(String.format("select * from lab1.persons%s", getSql.sql.length() > 0 ? " where " + getSql.sql : ""));
         for (var setter : getSql.setters) {
             setter.SetParam(statement);
         }
@@ -28,6 +29,7 @@ public class PostgreSQLDAO {
 
         while (resultSet.next()) {
             var person = new Person(
+                    resultSet.getInt("id"),
                     resultSet.getString("name"),
                     resultSet.getString("surname"),
                     resultSet.getInt("age"),
@@ -53,6 +55,9 @@ public class PostgreSQLDAO {
             return false;
         }
         var statement = connection.prepareStatement(String.format("update lab1.persons set %s where id = ?", updateSql.sql));
+        for (var setter : updateSql.setters) {
+            setter.SetParam(statement);
+        }
         statement.setInt(updateSql.setters.size() + 1, id);
         var affected = statement.executeUpdate();
         return affected > 0;
@@ -68,13 +73,14 @@ public class PostgreSQLDAO {
             var questionMarks = IntStream.range(0, insertSql.setters.size()).mapToObj(idx -> "?").collect(Collectors.joining(", "));
             valuesSql = String.format("(%s) VALUES (%s)", insertSql.sql, questionMarks);
         }
-        var statement = connection.prepareStatement(String.format("insert into lab1.persons %s", valuesSql));
+        var statement = connection.prepareStatement(String.format("insert into lab1.persons %s", valuesSql), Statement.RETURN_GENERATED_KEYS);
         for (var setter : insertSql.setters) {
             setter.SetParam(statement);
         }
         statement.executeUpdate();
-        statement.getGeneratedKeys().next();
-        return statement.getGeneratedKeys().getInt(1);
+        var keys = statement.getGeneratedKeys();
+        keys.next();
+        return keys.getInt(1);
     }
 
     private static SqlParams createSqlParams(String delimiter, Function<String, String> nameFormat, String name, String surname, Integer age, String country, String city, byte[] avatar) {
@@ -96,8 +102,8 @@ public class PostgreSQLDAO {
                     .map(v -> v.name)
                     .map(nameFormat)
                     .collect(Collectors.joining(delimiter));
-            paramsSetters = IntStream.range(1, notNullColumns.size() + 1)
-                    .mapToObj(idx -> createSetter(idx, notNullColumns.get(idx)))
+            paramsSetters = IntStream.range(0, notNullColumns.size())
+                    .mapToObj(idx -> createSetter(idx + 1, notNullColumns.get(idx).value))
                     .collect(Collectors.toCollection(ArrayList::new));
         }
         return new SqlParams(conditions, paramsSetters);
