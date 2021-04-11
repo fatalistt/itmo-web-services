@@ -6,16 +6,24 @@ public class Person {
     private int age;
     private String country;
     private String city;
+    private byte[] avatar;
 
     public Person() {
     }
 
-    public Person(String name, String surname, int age, String country, String city) {
+    public Person(
+            String name,
+            String surname,
+            int age,
+            String country,
+            String city,
+            byte[] avatar) {
         this.name = name;
         this.surname = surname;
         this.age = age;
         this.country = country;
         this.city = city;
+        this.avatar = avatar;
     }
 
     public String getName() {
@@ -58,6 +66,18 @@ public class Person {
         this.city = city;
     }
 
+    public boolean hasAvatar() {
+        return avatar != null && avatar.length > 0;
+    }
+
+    public byte[] getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(byte[] avatar) {
+        this.avatar = avatar;
+    }
+
     @Override
     public String toString() {
         return "Person{" +
@@ -66,6 +86,7 @@ public class Person {
                 ", age=" + age +
                 ", country='" + country + '\'' +
                 ", city='" + city + '\'' +
+                ", hasAvatar='" + hasAvatar() + '\'' +
                 '}';
     }
 }

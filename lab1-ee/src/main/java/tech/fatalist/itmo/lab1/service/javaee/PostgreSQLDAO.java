@@ -25,8 +25,8 @@ public class PostgreSQLDAO {
                     resultSet.getString("surname"),
                     resultSet.getInt("age"),
                     resultSet.getString("country"),
-                    resultSet.getString("city")
-            );
+                    resultSet.getString("city"),
+                    resultSet.getBytes("avatar"));
             persons.add(person);
         }
 

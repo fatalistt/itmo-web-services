@@ -1,6 +1,6 @@
-<wsdl:definitions name="PersonService" targetNamespace="http://javaee.service.lab1.itmo.fatalist.tech/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://javaee.service.lab1.itmo.fatalist.tech/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://javaee.service.lab1.itmo.fatalist.tech/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="PersonService" targetNamespace="http://javaee.service.lab1.itmo.fatalist.tech/">
   <wsdl:types>
-    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://javaee.service.lab1.itmo.fatalist.tech/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://javaee.service.lab1.itmo.fatalist.tech/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://javaee.service.lab1.itmo.fatalist.tech/" version="1.0">
       <xs:element name="getPersons" type="tns:getPersons"/>
       <xs:element name="getPersonsResponse" type="tns:getPersonsResponse"/>
       <xs:complexType name="getPersons">
@@ -38,19 +38,19 @@
     </xs:schema>
   </wsdl:types>
   <wsdl:message name="getPersons">
-    <wsdl:part element="tns:getPersons" name="parameters"/>
+    <wsdl:part element="tns:getPersons" name="parameters"> </wsdl:part>
   </wsdl:message>
   <wsdl:message name="SQLException">
-    <wsdl:part element="tns:SQLException" name="SQLException"/>
+    <wsdl:part element="tns:SQLException" name="SQLException"> </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getPersonsResponse">
-    <wsdl:part element="tns:getPersonsResponse" name="parameters"/>
+    <wsdl:part element="tns:getPersonsResponse" name="parameters"> </wsdl:part>
   </wsdl:message>
   <wsdl:portType name="PersonWebService">
     <wsdl:operation name="getPersons">
-      <wsdl:input message="tns:getPersons" name="getPersons"/>
-      <wsdl:output message="tns:getPersonsResponse" name="getPersonsResponse"/>
-      <wsdl:fault message="tns:SQLException" name="SQLException"/>
+      <wsdl:input message="tns:getPersons" name="getPersons"> </wsdl:input>
+      <wsdl:output message="tns:getPersonsResponse" name="getPersonsResponse"> </wsdl:output>
+      <wsdl:fault message="tns:SQLException" name="SQLException"> </wsdl:fault>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="PersonServiceSoapBinding" type="tns:PersonWebService">

@@ -17,6 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &amp;lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&amp;gt;
  *       &amp;lt;sequence&amp;gt;
  *         &amp;lt;element name="age" type="{http://www.w3.org/2001/XMLSchema}int"/&amp;gt;
+ *         &amp;lt;element name="avatar" type="{http://www.w3.org/2001/XMLSchema}base64Binary" minOccurs="0"/&amp;gt;
  *         &amp;lt;element name="city" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&amp;gt;
  *         &amp;lt;element name="country" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&amp;gt;
  *         &amp;lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&amp;gt;
@@ -32,6 +33,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "person", propOrder = {
     "age",
+    "avatar",
     "city",
     "country",
     "name",
@@ -40,6 +42,7 @@ import javax.xml.bind.annotation.XmlType;
 public class Person {
 
     protected int age;
+    protected byte[] avatar;
     protected String city;
     protected String country;
     protected String name;
@@ -59,6 +62,28 @@ public class Person {
      */
     public void setAge(int value) {
         this.age = value;
+    }
+
+    /**
+     * Gets the value of the avatar property.
+     * 
+     * @return
+     *     possible object is
+     *     byte[]
+     */
+    public byte[] getAvatar() {
+        return avatar;
+    }
+
+    /**
+     * Sets the value of the avatar property.
+     * 
+     * @param value
+     *     allowed object is
+     *     byte[]
+     */
+    public void setAvatar(byte[] value) {
+        this.avatar = value;
     }
 
     /**
@@ -157,6 +182,10 @@ public class Person {
         this.surname = value;
     }
 
+    public boolean hasAvatar() {
+        return avatar != null && avatar.length > 0;
+    }
+
     @Override
     public String toString() {
         return "Person{" +
@@ -165,6 +194,7 @@ public class Person {
                 ", country='" + country + '\'' +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
+                ", hasAvatar='" + hasAvatar() + '\'' +
                 '}';
     }
 }
