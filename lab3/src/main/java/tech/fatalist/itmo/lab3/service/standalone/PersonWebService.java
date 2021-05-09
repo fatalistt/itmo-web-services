@@ -1,8 +1,7 @@
 package tech.fatalist.itmo.lab3.service.standalone;
 
 import tech.fatalist.itmo.lab3.service.standalone.errors.ObjectNotFoundException;
-import tech.fatalist.itmo.lab3.service.standalone.errors.WebException;
-import tech.fatalist.itmo.lab3.service.standalone.errors.WebFault;
+import tech.fatalist.itmo.lab3.service.standalone.errors.WebExceptionDetails;
 import tech.fatalist.itmo.lab3.service.standalone.results.CreationResult;
 import tech.fatalist.itmo.lab3.service.standalone.results.DeletionResult;
 import tech.fatalist.itmo.lab3.service.standalone.results.UpdateResult;
@@ -31,11 +30,11 @@ public class PersonWebService {
     @WebMethod(operationName = "deletePerson")
     public DeletionResult DeletePersonById(
             @WebParam(name = "id") int id
-    ) throws SQLException, WebException {
+    ) throws SQLException, ObjectNotFoundException {
         var dao = new PostgreSQLDAO(getConnection());
         var deleted = dao.DeletePerson(id);
         if (!deleted) {
-            var fault = new WebFault("Person with id [%d] not found".formatted(id));
+            var fault = new WebExceptionDetails("Person with id [%d] not found".formatted(id));
             throw new ObjectNotFoundException(fault);
         }
         return new DeletionResult("success");
@@ -54,7 +53,7 @@ public class PersonWebService {
         var dao = new PostgreSQLDAO(getConnection());
         var updated = dao.UpdatePerson(id, name, surname, age, country, city, avatar);
         if (!updated) {
-            var fault = new WebFault("Person with id [%d] not found".formatted(id));
+            var fault = new WebExceptionDetails("Person with id [%d] not found".formatted(id));
             throw new ObjectNotFoundException(fault);
         }
         return new UpdateResult("success");

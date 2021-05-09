@@ -6,8 +6,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public record WebFault(String message) {
-    public WebFault() {
+public record WebExceptionDetails(String message) {
+    public WebExceptionDetails() {
         this(null);
     }
 }
