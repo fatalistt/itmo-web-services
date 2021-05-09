@@ -21,12 +21,18 @@
         <module name="lab1" />
         <module name="lab1-ee" />
         <module name="lab1-client" />
+        <module name="lab2" />
+        <module name="lab3" />
+        <module name="lab4-standalone-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="lab1" target="16" />
       <module name="lab1-client" target="16" />
       <module name="lab1-ee" target="16" />
+      <module name="lab2" target="16" />
+      <module name="lab3" target="16" />
+      <module name="lab4-standalone-service" target="16" />
     </bytecodeTargetLevel>
   </component>
 </project>
