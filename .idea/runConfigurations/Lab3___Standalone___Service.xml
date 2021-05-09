@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Lab3 - Standalone - Service" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="tech.fatalist.itmo.lab3.service.standalone.App" />
+    <module name="lab3" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
