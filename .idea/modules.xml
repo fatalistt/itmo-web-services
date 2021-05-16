@@ -8,7 +8,8 @@
       <module fileurl="file://$PROJECT_DIR$/lab2/lab2.iml" filepath="$PROJECT_DIR$/lab2/lab2.iml" />
       <module fileurl="file://$PROJECT_DIR$/lab3/lab3.iml" filepath="$PROJECT_DIR$/lab3/lab3.iml" />
       <module fileurl="file://$PROJECT_DIR$/lab4-client/lab4-client.iml" filepath="$PROJECT_DIR$/lab4-client/lab4-client.iml" />
-      <module fileurl="file://$PROJECT_DIR$/lab4-standalone/lab4-standalone-service.iml" filepath="$PROJECT_DIR$/lab4-standalone/lab4-standalone-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lab4-standalone-service/lab4-standalone-service.iml" filepath="$PROJECT_DIR$/lab4-standalone-service/lab4-standalone-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lab4-ee-service/lab4-ee-service.iml" filepath="$PROJECT_DIR$/lab4-ee-service/lab4-ee-service.iml" />
     </modules>
   </component>
 </project>

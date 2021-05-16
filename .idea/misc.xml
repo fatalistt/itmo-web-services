@@ -2,6 +2,7 @@
 <project version="4">
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/lab1-ee" />
+    <file type="web" url="file://$PROJECT_DIR$/lab4-ee-service" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
@@ -13,6 +14,7 @@
         <option value="$PROJECT_DIR$/lab3/pom.xml" />
         <option value="$PROJECT_DIR$/lab4-client/pom.xml" />
         <option value="$PROJECT_DIR$/lab4-standalone-service/pom.xml" />
+        <option value="$PROJECT_DIR$/lab4-ee-service/pom.xml" />
       </list>
     </option>
   </component>

@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Lab4 - Standalone - Client" type="Application" factoryName="Application">
+  <configuration default="false" name="Lab4 - Client" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="tech.fatalist.itmo.lab4.client.App" />
     <module name="lab4-client" />
     <method v="2">

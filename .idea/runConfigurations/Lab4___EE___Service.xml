@@ -1,8 +1,9 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="WildFly" type="JBossConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="JBoss/WildFly 23.0.0.Final" ALTERNATIVE_JRE_ENABLED="false">
-    <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/lab1-ee-1.0-SNAPSHOT" />
+  <configuration default="false" name="Lab4 - EE - Service" type="JBossConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="JBoss/WildFly 23.0.0.Final" ALTERNATIVE_JRE_ENABLED="false">
+    <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/lab4-ee-service-1.0-SNAPSHOT" />
+    <option name="UPDATING_POLICY" value="restart-server" />
     <deployment>
-      <artifact name="lab1-ee:war exploded">
+      <artifact name="lab4-ee-service:war exploded">
         <settings />
       </artifact>
     </deployment>
@@ -66,7 +67,7 @@
     <method v="2">
       <option name="Make" enabled="true" />
       <option name="BuildArtifacts" enabled="true">
-        <artifact name="lab1-ee:war exploded" />
+        <artifact name="lab4-ee-service:war exploded" />
       </option>
     </method>
   </configuration>
