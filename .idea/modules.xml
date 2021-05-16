@@ -10,6 +10,7 @@
       <module fileurl="file://$PROJECT_DIR$/lab4-client/lab4-client.iml" filepath="$PROJECT_DIR$/lab4-client/lab4-client.iml" />
       <module fileurl="file://$PROJECT_DIR$/lab4-standalone-service/lab4-standalone-service.iml" filepath="$PROJECT_DIR$/lab4-standalone-service/lab4-standalone-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/lab4-ee-service/lab4-ee-service.iml" filepath="$PROJECT_DIR$/lab4-ee-service/lab4-ee-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lab5/lab5.iml" filepath="$PROJECT_DIR$/lab5/lab5.iml" />
     </modules>
   </component>
 </project>
