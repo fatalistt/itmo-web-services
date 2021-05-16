@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Lab6 - Client" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="tech.fatalist.itmo.lab6.client.App" />
+    <module name="lab6" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
