@@ -38,6 +38,7 @@ public class PersonResource {
 
     @DELETE
     @Path("{id}")
+    @Protected
     public DeleteResponse deletePersonById(@PathParam("id") int id) throws SQLException, ObjectNotFoundException {
         var dao = new PostgreSQLDAO(getConnection());
         var deleted = dao.deletePerson(id);
@@ -49,6 +50,7 @@ public class PersonResource {
 
     @PUT
     @Path("{id}")
+    @Protected
     public UpdateResponse updatePerson(@PathParam("id") int id, UpdateRequest request) throws SQLException, ObjectNotFoundException {
         var dao = new PostgreSQLDAO(getConnection());
         var updated = dao.updatePerson(
@@ -66,6 +68,7 @@ public class PersonResource {
     }
 
     @POST
+    @Protected
     public CreateResponse CreatePerson(CreateRequest request) throws SQLException {
         var dao = new PostgreSQLDAO(getConnection());
         var createdId = dao.createPerson(

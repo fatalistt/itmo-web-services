@@ -3,11 +3,9 @@ package tech.fatalist.itmo.lab6.service.standalone;
 import jakarta.ws.rs.container.ContainerRequestContext;
 import jakarta.ws.rs.container.ContainerRequestFilter;
 import jakarta.ws.rs.core.Response;
-import jakarta.ws.rs.ext.Provider;
 
 import java.util.Base64;
 
-@Provider
 public class AuthFilter implements ContainerRequestFilter {
     private static final Response Unauthorized = Response
             .status(Response.Status.UNAUTHORIZED)
