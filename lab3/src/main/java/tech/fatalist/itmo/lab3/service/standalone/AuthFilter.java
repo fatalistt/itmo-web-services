@@ -1,9 +1,11 @@
 package tech.fatalist.itmo.lab3.service.standalone;
 
+import org.apache.cxf.binding.soap.SoapMessage;
+import org.apache.cxf.binding.soap.interceptor.AbstractSoapInterceptor;
 import org.apache.cxf.interceptor.Fault;
 import org.apache.cxf.message.Message;
-import org.apache.cxf.phase.AbstractPhaseInterceptor;
 import org.apache.cxf.phase.Phase;
+import org.apache.cxf.service.invoker.MethodDispatcher;
 
 import javax.xml.namespace.QName;
 import java.util.ArrayList;
@@ -11,7 +13,7 @@ import java.util.Base64;
 import java.util.ResourceBundle;
 import java.util.TreeMap;
 
-public class AuthFilter extends AbstractPhaseInterceptor<Message> {
+public class AuthFilter extends AbstractSoapInterceptor {
     private static final Fault Unauthorized = new Fault("Basic authentication required", (ResourceBundle) null);
     private static final Fault Forbidden = new Fault("Wrong login or password", (ResourceBundle) null);
 
@@ -23,11 +25,18 @@ public class AuthFilter extends AbstractPhaseInterceptor<Message> {
     }
 
     public AuthFilter() {
-        super(Phase.READ);
+        super(Phase.PRE_INVOKE);
     }
 
     @Override
-    public void handleMessage(Message message) throws Fault {
+    public void handleMessage(SoapMessage message) throws Fault {
+        var boi = message.getExchange().getBindingOperationInfo();
+        var dispatcher = (MethodDispatcher) message.getExchange().getService().get(MethodDispatcher.class.getName());
+        var method = dispatcher.getMethod(boi);
+        if (method.getAnnotation(Protected.class) == null) {
+            return;
+        }
+
         var headers = ((TreeMap<String, ArrayList<String>>)message.get(Message.PROTOCOL_HEADERS))
                 .get("Authorization");
         if (headers == null) {

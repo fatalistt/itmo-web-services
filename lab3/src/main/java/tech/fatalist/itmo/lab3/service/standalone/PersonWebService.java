@@ -30,6 +30,7 @@ public class PersonWebService {
     }
 
     @WebMethod(operationName = "deletePerson")
+    @Protected
     public DeletionResult DeletePersonById(
             @WebParam(name = "id") int id
     ) throws SQLException, ObjectNotFoundException {
@@ -43,6 +44,7 @@ public class PersonWebService {
     }
 
     @WebMethod(operationName = "updatePerson")
+    @Protected
     public UpdateResult UpdatePerson(
             @WebParam(name = "id") int id,
             @WebParam(name = "name") String name,
@@ -62,6 +64,7 @@ public class PersonWebService {
     }
 
     @WebMethod(operationName = "createPerson")
+    @Protected
     public CreationResult CreatePerson(
             @WebParam(name = "name") String name,
             @WebParam(name = "surname") String surname,
