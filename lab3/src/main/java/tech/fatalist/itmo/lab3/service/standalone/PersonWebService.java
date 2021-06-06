@@ -1,5 +1,6 @@
 package tech.fatalist.itmo.lab3.service.standalone;
 
+import org.apache.cxf.interceptor.InInterceptors;
 import tech.fatalist.itmo.lab3.service.standalone.errors.ObjectNotFoundException;
 import tech.fatalist.itmo.lab3.service.standalone.errors.WebExceptionDetails;
 import tech.fatalist.itmo.lab3.service.standalone.results.CreationResult;
@@ -14,6 +15,7 @@ import java.sql.SQLException;
 import java.util.Collection;
 
 @WebService(serviceName = "PersonService")
+@InInterceptors(classes = {AuthFilter.class})
 public class PersonWebService {
     @WebMethod(operationName = "getPersons")
     public Collection<Person> GetPersons(

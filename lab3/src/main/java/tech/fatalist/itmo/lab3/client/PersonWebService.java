@@ -1,5 +1,7 @@
 package tech.fatalist.itmo.lab3.client;
 
+import org.apache.cxf.interceptor.OutInterceptors;
+
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
@@ -16,6 +18,7 @@ import javax.xml.ws.ResponseWrapper;
  */
 @WebService(targetNamespace = "http://standalone.service.lab3.itmo.fatalist.tech/", name = "PersonWebService")
 @XmlSeeAlso({ObjectFactory.class})
+@OutInterceptors(classes = {AuthFilter.class})
 public interface PersonWebService {
 
     @WebMethod
