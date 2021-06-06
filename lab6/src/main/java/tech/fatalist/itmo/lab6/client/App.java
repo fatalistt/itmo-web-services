@@ -1,11 +1,15 @@
 package tech.fatalist.itmo.lab6.client;
 
 import jakarta.ws.rs.NotFoundException;
-import org.glassfish.jersey.client.JerseyClientBuilder;
+import jakarta.ws.rs.client.ClientBuilder;
 
 public class App {
     public static void main(String[] args) {
-        final var client = new PersonClient("http://0.0.0.0:8080/rest/", new JerseyClientBuilder().build());
+        final var rsClient = ClientBuilder
+                .newBuilder()
+                .register(new AuthFilter())
+                .build();
+        final var client = new PersonClient("http://0.0.0.0:8080/rest/", rsClient);
         var persons = client.getPersons(null, null, null, null, null);
         System.out.println("Response:");
         persons.forEach(System.out::println);
