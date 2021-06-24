@@ -28,6 +28,7 @@
         <module name="lab4-ee-service" />
         <module name="lab5" />
         <module name="lab6" />
+        <module name="lab7" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -41,6 +42,7 @@
       <module name="lab4-ee-service" target="16" />
       <module name="lab5" target="16" />
       <module name="lab6" target="16" />
+      <module name="lab7" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>
